@@ -1,4 +1,3 @@
-
 #include "StateMachine.h"
 #include "config.h"
 #include "control/Geometry.h"
@@ -95,6 +94,10 @@ void StateMachine::begin() {
         fail("BNO085 initialization failed");
         return;
     }
+
+    // Every Wire.begin() (also inside the encoder and IMU init) resets the
+    // clock to 100 kHz, so set the configured value after the last begin().
+    Wire.setClock(I2C_FREQUENCY);
 
 
     float savedHeight = NAN;
@@ -355,6 +358,11 @@ void StateMachine::updateMotor(uint32_t now) {
         return;
     }
 
+    if (motor_.isUnstable()) {
+        fail("Motor control oscillation");
+        return;
+    }
+
     if (state_ == State::RUN) {
         if (!imu_.isFresh(IMU_TIMEOUT_MS)) {
             fail("IMU data timeout");
@@ -519,6 +527,9 @@ void StateMachine::printStatus(uint32_t now) {
         Serial.print(
             Geometry::radToDeg(motorTargetRad_), 2
         );
+
+        Serial.print(" loop[Hz]=");
+        Serial.print(motor_.loopRateHz());
     }
 
     if (state_ == State::ERROR) {
@@ -798,4 +809,3 @@ void StateMachine::update() {
         printStatus(now);
     }
 }
-  

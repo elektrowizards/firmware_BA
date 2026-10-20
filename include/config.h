@@ -1,4 +1,3 @@
-
 #pragma once
 #include <Arduino.h>
 
@@ -20,7 +19,9 @@ constexpr uint32_t MOTOR_ENABLE = D8;   // PA9
 // Shared I2C bus
 constexpr uint32_t I2C_SDA_PIN = D14;   // PB9
 constexpr uint32_t I2C_SCL_PIN = D15;   // PB8
-constexpr uint32_t I2C_FREQUENCY = 50000;
+// Every Wire.begin() resets the clock to 100 kHz; the application sets it again
+// after all begin() calls. 100 kHz is what the motor loop was tuned with.
+constexpr uint32_t I2C_FREQUENCY = 100000;
 
 // Reserved laser pin: ALWAYS OFF for bench testing
 constexpr uint32_t LASER_PIN = D4;
@@ -56,17 +57,26 @@ constexpr float MOTOR_ROLL_SIGN = 1.0f;
 
 // ======================================
 // MOTOR - FIT1035
+// Values tuned on the bare motor (no laser load): Kp 15, Kd 0.06, Ki 32,
+// Tf 0.04, 2 V run limit. They MUST be re-tuned with the laser mounted.
 // ======================================
-constexpr int MOTOR_POLE_PAIRS = 7;
+constexpr int MOTOR_POLE_PAIRS = 7;              // measured: 7.00 +/- 0.02
 
-constexpr float MOTOR_SUPPLY_VOLTAGE = 12.0f;
-constexpr float MOTOR_VOLTAGE_LIMIT = 2.0f;
-constexpr float MOTOR_ALIGN_VOLTAGE = 1.0f;
+constexpr float MOTOR_SUPPLY_VOLTAGE = 12.0f;    // set to the measured value at the driver
+constexpr float MOTOR_ALIGN_VOLTAGE = 4.0f;      // alignment needs high voltage (cogging)
+constexpr float MOTOR_VOLTAGE_LIMIT = 2.0f;      // run limit, phase voltage amplitude [V]
+
+// Position law: Uq = Kp*err - Kd*velocity + integral(Ki*err)
+constexpr float MOTOR_KP = 15.0f;                // [V/rad]
+constexpr float MOTOR_KD = 0.06f;                // [V*s/rad]
+constexpr float MOTOR_KI = 32.0f;                // [V/(rad*s)]
+constexpr float MOTOR_VELOCITY_FILTER_TF = 0.04f;        // [s]
+constexpr float MOTOR_ENCODER_VEL_WINDOW_S = 0.005f;     // sensor.min_elapsed_time [s]
+
+// Legacy cascade parameters (no longer used by MotorControl)
 constexpr float MOTOR_VELOCITY_LIMIT = 3.0f;
-
-// Conservative preliminary controller gains
 constexpr float MOTOR_VEL_P = 0.2f;
-constexpr float MOTOR_VEL_I = 2.0f; //test
+constexpr float MOTOR_VEL_I = 2.0f;
 constexpr float MOTOR_ANGLE_P = 6.0f;
 
 // ======================================
