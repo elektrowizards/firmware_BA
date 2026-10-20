@@ -1,9 +1,20 @@
-
 #include "StateMachine.h"
 #include "config.h"
 #include "control/Geometry.h"
+#include "TrackTest.h"
 
 #include <math.h>
+
+// ==========================================
+// I2C CLOCK DURING OPERATION
+// ==========================================
+// AS5600 (encoder), BNO085 (IMU) and VL53L8CX share one bus.
+// At 100 kHz an IMU read can block the encoder (and loopFOC) for
+// several ms. 400 kHz is the BNO085 maximum. 'i' toggles 100k/400k
+// at runtime for a before/after comparison with the track test.
+static constexpr uint32_t I2C_FAST_HZ = 400000;
+static constexpr uint32_t I2C_SLOW_HZ = 100000;
+static uint32_t s_i2cHz = I2C_FAST_HZ;
 
 // ==========================================
 // STATE NAMES
@@ -36,6 +47,11 @@ void StateMachine::changeState(State next) {
 
     if (next == State::IDLE || next == State::ERROR) {
         motor_.stop();
+    }
+
+    // A running track test is only valid in RUN.
+    if (next != State::RUN) {
+        trackTest.abort(stateName(next));
     }
 
     state_ = next;
@@ -96,6 +112,12 @@ void StateMachine::begin() {
         return;
     }
 
+
+    // Every Wire.begin() inside the drivers resets the clock,
+    // so set the operating clock after the last driver init.
+    bus_.getWire().setClock(s_i2cHz);
+    Serial.print("I2C clock [Hz]: ");
+    Serial.println(s_i2cHz);
 
     float savedHeight = NAN;
     if (storage_.loadHeight(savedHeight)) {
@@ -573,6 +595,42 @@ void StateMachine::handleSerial(uint32_t now) {
                 Serial.println("] = Motor +1 degree");
                 Serial.println("[ = Motor -1 degree");
                 Serial.println("! = Stop motor");
+                Serial.println("r = Track test, summary only (RUN)");
+                Serial.println("R = Track test, summary + CSV (RUN)");
+                Serial.println("x = Abort track test");
+                Serial.println("i = Toggle I2C clock 100k/400k");
+            }
+
+            // =====================================
+            // TRACK TEST
+            // =====================================
+
+            else if (command == 'r' || command == 'R') {
+                if (state_ == State::RUN) {
+                    trackTest.start(command == 'R');
+                } else {
+                    Serial.println("[TRACK] Only available in RUN");
+                }
+            }
+
+            else if (command == 'x') {
+                trackTest.abort("user");
+            }
+
+            // =====================================
+            // I2C CLOCK TOGGLE (for comparison)
+            // =====================================
+
+            else if (command == 'i') {
+                if (trackTest.isActive()) {
+                    Serial.println("[I2C] Not during a track test");
+                } else {
+                    s_i2cHz = (s_i2cHz == I2C_FAST_HZ)
+                        ? I2C_SLOW_HZ : I2C_FAST_HZ;
+                    bus_.getWire().setClock(s_i2cHz);
+                    Serial.print("[I2C] Clock [Hz] = ");
+                    Serial.println(s_i2cHz);
+                }
             }
 
             // =====================================
@@ -781,6 +839,20 @@ void StateMachine::update() {
     }
 
     // ==========================================
+    // 5b. TRACK TEST RECORDING
+    // ==========================================
+
+    // Does nothing unless a test was started with 'r' or 'R'.
+    if (state_ == State::RUN) {
+        trackTest.update(
+            true,
+            Geometry::radToDeg(roll_.getRelativeRoll()),
+            Geometry::radToDeg(motorTargetRad_),
+            Geometry::radToDeg(motor_.getAngle())
+        );
+    }
+
+    // ==========================================
     // 6. SERIAL MONITOR
     // ==========================================
 
@@ -791,6 +863,7 @@ void StateMachine::update() {
          state_ == State::RUN) &&
         autoStatusEnabled_ &&
         !commandInProgress_ &&
+        !trackTest.isActive() &&
         (uint32_t)(now - lastStatusMs_)
             >= STATUS_PERIOD_MS) {
 
@@ -798,4 +871,3 @@ void StateMachine::update() {
         printStatus(now);
     }
 }
-  
