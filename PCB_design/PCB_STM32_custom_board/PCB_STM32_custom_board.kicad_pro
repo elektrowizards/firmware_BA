@@ -151,22 +151,22 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.2,
-        "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.0,
+        "min_clearance": 0.1,
+        "min_connection": 0.1,
+        "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
-        "min_hole_to_hole": 0.254,
+        "min_hole_to_hole": 0.45,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
-        "min_silk_clearance": 0.0,
-        "min_text_height": 0.8,
-        "min_text_thickness": 0.08,
+        "min_silk_clearance": 0.15,
+        "min_text_height": 1.0,
+        "min_text_thickness": 0.15,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.2,
-        "min_via_annular_width": 0.13,
-        "min_via_diameter": 0.5,
+        "min_track_width": 0.1,
+        "min_via_annular_width": 0.15,
+        "min_via_diameter": 0.6,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -264,7 +264,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": "0.1"
+      "sch_revision": "7"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -512,7 +512,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "stm32_kicad.kicad_pro",
+    "filename": "PCB_STM32_custom_board.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -622,12 +622,24 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -667,12 +679,12 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "stm32_kicad.kicad_sch",
+        "filename": "PCB_STM32_custom_board.kicad_sch",
         "name": "Root",
         "uuid": "f2af9b37-8671-492d-bd69-acebebd8ef6f"
       }
     ],
-    "used_designators": "",
+    "used_designators": "U3",
     "variants": []
   },
   "sheets": [
