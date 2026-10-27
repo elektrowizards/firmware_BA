@@ -1405,10 +1405,30 @@
 					)
 				)
 			)
+		)
+		(symbol "SimpleFOCmini_FOC_Brushless_DC_Motor_Driver_Board_-_DRI0058_1_0"
 			(pin output line
-				(at 22.86 -8.89 180)
+				(at -2.54 -27.94 0)
 				(length 2.54)
-				(name "M1"
+				(name "FAULT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at 22.86 -3.81 180)
+				(length 2.54)
+				(name "M3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1442,9 +1462,9 @@
 				)
 			)
 			(pin output line
-				(at 22.86 -3.81 180)
+				(at 22.86 -8.89 180)
 				(length 2.54)
-				(name "M3"
+				(name "M1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1452,26 +1472,6 @@
 					)
 				)
 				(number "15"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(symbol "SimpleFOCmini_FOC_Brushless_DC_Motor_Driver_Board_-_DRI0058_1_0"
-			(pin output line
-				(at -2.54 -27.94 0)
-				(length 2.54)
-				(name "FAULT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "10"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1899,6 +1899,176 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "USB-C_BMS_Li-on_Batterie_Lademodul"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at 9.144 -0.254 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "USB-C BMS Li-on Batterie Lademodul"
+			(at 11.176 2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.roboter-bausatz.de/p/usb-c-bms-li-on-batterie-lademodul-3s-4.5v-15v-18w-3a?ref=ga&gad_source=1&gad_campaignid=12461217733&gclid=CjwKCAjw1vXTBhB-EiwAEKr_k0iWE64K-uFkuu0XaoEn6kw6ZBLl_Gn0cRHvsdp-dMwVlxGprYim9BoC5jMQAvD_BwE"
+			(at 133.096 -10.668 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "4.5V-15V 18W 3A"
+			(at 9.652 -8.382 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "USB-C_BMS_Li-on_Batterie_Lademodul_0_0"
+			(pin power_in line
+				(at -2.54 -2.54 0)
+				(length 2.54)
+				(name "B+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -5.08 0)
+				(length 2.54)
+				(name "B-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "USB-C_BMS_Li-on_Batterie_Lademodul_1_0"
+			(pin power_out line
+				(at 22.86 -2.54 180)
+				(length 2.54)
+				(name "VOUT+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 22.86 -5.08 180)
+				(length 2.54)
+				(name "VOUT-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "USB-C_BMS_Li-on_Batterie_Lademodul_1_1"
+			(rectangle
+				(start 0 -1.27)
+				(end 20.32 -6.35)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(text "TYPE-C"
+				(at 8.636 -4.572 0)
+				(effects
+					(font
+						(size 1.016 1.016)
+						(thickness 0.254)
+						(bold yes)
+					)
+				)
+			)
+			(text "LADEMODUL "
+				(at 8.89 -2.794 0)
+				(effects
+					(font
+						(size 1.016 1.016)
+						(thickness 0.254)
+						(bold yes)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "Waveshare_DC-DC_Buck_Mini_Module,_bi"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1916,7 +2086,7 @@
 			)
 		)
 		(property "Value" "Waveshare DC-DC Buck Mini Module"
-			(at 12.192 1.524 0)
+			(at 13.208 3.048 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1937,7 +2107,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.waveshare.com/wiki/DC5-36-TO-DC3V3-5"
-			(at 27.686 -14.478 0)
+			(at 27.686 -24.892 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
@@ -1948,7 +2118,7 @@
 			)
 		)
 		(property "Description" "bis zu 4A, 500kHz, 5-36V Eingang, 3,3V oder 5V Ausgang\""
-			(at 29.21 -12.446 0)
+			(at 29.21 -22.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(hide yes)
@@ -1958,11 +2128,11 @@
 				)
 			)
 		)
-		(symbol "Waveshare_DC-DC_Buck_Mini_Module,_bi_0_0"
+		(symbol "Waveshare_DC-DC_Buck_Mini_Module,_bi_1_0"
 			(pin power_in line
 				(at -2.54 -6.35 0)
 				(length 2.54)
-				(name "VIN+"
+				(name "VIN"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1978,9 +2148,9 @@
 				)
 			)
 			(pin power_in line
-				(at -2.54 -3.81 0)
+				(at -2.54 -8.89 0)
 				(length 2.54)
-				(name "VIN-"
+				(name "VIN"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1995,10 +2165,10 @@
 					)
 				)
 			)
-			(pin power_out line
-				(at 25.4 -3.81 180)
+			(pin passive line
+				(at -2.54 -11.43 0)
 				(length 2.54)
-				(name "VOUT+"
+				(name "GND"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2013,8 +2183,8 @@
 					)
 				)
 			)
-			(pin power_out line
-				(at 25.4 -6.35 180)
+			(pin passive line
+				(at -2.54 -13.97 0)
 				(length 2.54)
 				(name "GND"
 					(effects
@@ -2031,11 +2201,119 @@
 					)
 				)
 			)
+			(pin power_out line
+				(at 25.4 -3.81 180)
+				(length 2.54)
+				(name "VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 25.4 -6.35 180)
+				(length 2.54)
+				(name "VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 25.4 -8.89 180)
+				(length 2.54)
+				(name "VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -11.43 180)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -13.97 180)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 25.4 -16.51 180)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
 		)
 		(symbol "Waveshare_DC-DC_Buck_Mini_Module,_bi_1_1"
 			(rectangle
 				(start 0 0)
-				(end 22.86 -10.16)
+				(end 22.86 -20.32)
 				(stroke
 					(width 0)
 					(type solid)
@@ -2045,7 +2323,7 @@
 				)
 			)
 			(text "Buck Converter 5V"
-				(at 11.684 -8.89 0)
+				(at 11.176 -18.796 0)
 				(effects
 					(font
 						(size 1.27 1.27)
