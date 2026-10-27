@@ -14390,7 +14390,7 @@
 			(at 19.6058 27.4329 90)
 			(unlocked yes)
 			(layer "F.SilkS")
-			(uuid "973977c4-eb9a-4542-befb-0fc036dd9c81")
+			(uuid "a3a43811-44d9-4696-9c90-93f9456995c4")
 			(effects
 				(font
 					(size 1 1)
@@ -14403,7 +14403,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4defaf1d-d0ce-4f64-8dc5-3146711bec79")
+			(uuid "9c14de7f-7fe2-4005-808b-1b0d9e4aa55c")
 			(effects
 				(font
 					(size 1 1)
@@ -14416,7 +14416,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "748b09e3-7c8b-4acc-b844-124eea140320")
+			(uuid "406ec149-dd8f-4266-9589-e8e782e3d689")
 			(effects
 				(font
 					(size 1 1)
@@ -14429,7 +14429,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "02132266-d2cb-4530-b4a5-f588a185a8da")
+			(uuid "06650293-4e49-4883-ab4d-84883ea4a8e6")
 			(effects
 				(font
 					(size 1 1)
@@ -14626,17 +14626,6 @@
 			)
 			(layer "Edge.Cuts")
 			(uuid "391c0123-c007-4e72-9a2e-a78feb36caee")
-		)
-		(fp_arc
-			(start 23.408 -8.9263)
-			(mid 25.063499 -7.158835)
-			(end 23.429 -5.372)
-			(stroke
-				(width 0.254)
-				(type default)
-			)
-			(layer "Edge.Cuts")
-			(uuid "0a4947b6-df63-44c8-afbc-7b89e23a2576")
 		)
 		(fp_text user "EN"
 			(at 1.25 11.1 90)
@@ -14860,19 +14849,6 @@
 				(justify left top)
 			)
 		)
-		(fp_text user "-"
-			(at 21.973 -4.3543 90)
-			(unlocked yes)
-			(layer "F.SilkS")
-			(uuid "6114ec9c-8475-4f7b-858a-0e8802b9ae0e")
-			(effects
-				(font
-					(size 0.8 0.8)
-					(thickness 0.2032)
-				)
-				(justify left top)
-			)
-		)
 		(fp_text user "${REFERENCE}"
 			(at 2.7058 18.9329 0)
 			(unlocked yes)
@@ -14912,20 +14888,6 @@
 			(solder_paste_margin 0)
 			(thermal_bridge_angle 0)
 			(uuid "bf841e63-8451-4bbb-a271-bbb61056a34a")
-		)
-		(pad "2" thru_hole oval
-			(at 21.376 -3.2113 90)
-			(size 1.7 2.5)
-			(drill 1.1)
-			(layers "*.Cu" "*.Mask")
-			(remove_unused_layers no)
-			(net "/DRIVER_IN1")
-			(pinfunction "IN1_2")
-			(pintype "input")
-			(solder_mask_margin 0.0508)
-			(solder_paste_margin 0)
-			(thermal_bridge_angle 0)
-			(uuid "fb285f29-c1dc-45a2-95c2-7e6dde98abfd")
 		)
 		(pad "3" thru_hole oval
 			(at 7.7298 10.5799 180)
